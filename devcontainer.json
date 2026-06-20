@@ -1,0 +1,14 @@
+{
+  "name": "code-cad",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "bernhard-42.ocp-cad-viewer"
+      ]
+    }
+  },
+  "forwardPorts": [3939],
+  "postCreateCommand": "pip install --upgrade pip && pip install build123d ocp_vscode"
+}
