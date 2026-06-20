@@ -7,7 +7,7 @@ n_flaps = 69
 
 # pinhole pitch calcs
 pin_len = 2.5
-ph_cl = 0.4
+ph_cl = 0.3
 ph_sep = 1.2
 ph_rad = ph_cl + pin_len / 2
 
@@ -33,7 +33,6 @@ with BuildPart() as disc:
     with PolarLocations(radius=wh_rad_ph_cen, count=n_flaps):
         Hole(radius=ph_rad)
 
-
-# Get the directory where this python script lives
-export_step(disc.part, "my_part.step")
+# Get the directory where this python script lisves
+export_step(disc.part, "wheel_v0.step")
 
