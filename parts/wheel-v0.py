@@ -6,9 +6,9 @@ from build123d import *
 n_flaps = 69
 
 # pinhole pitch calcs
-pin_len = 3
+pin_len = 2.5
 ph_cl = 0.4
-ph_sep = 1.4
+ph_sep = 1.2
 ph_rad = ph_cl + pin_len / 2
 
 ph_pitch = ph_sep + ph_rad * 2
@@ -19,10 +19,10 @@ ph_wall_out = 3
 wh_rad_outer = wh_rad_ph_cen + ph_rad + ph_wall_out
 
 # wheel inner diameter is set by motor shaft diameter
-motor_shaft_rear_diam = 5.0
+drive_shaft_diam = 5.0
 
 outer_radius = wh_rad_outer
-hole_radius = 5.0
+hole_radius = drive_shaft_diam / 2
 thickness = 3
 
 with BuildPart() as disc:
