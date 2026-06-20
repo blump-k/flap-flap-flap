@@ -30,3 +30,9 @@ with BuildPart() as disc:
     # 4. Cut a hole through it
     # Hole() automatically centers itself and figures out the depth to cut completely through
     Hole(radius=hole_radius)
+
+# 3.
+
+# 3. Export as .glb (glTF binary)
+# You need to pass the actual shape to export, the filename, and set binary=True
+export_gltf(disc.part, "wheel_v0.glb", binary=True)
