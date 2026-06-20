@@ -9,7 +9,7 @@ n_flaps = 69
 pin_len = 3
 ph_cl = 0.4
 ph_sep = 1.4
-ph_rad = ph_cl + ph_sep / 2
+ph_rad = ph_cl + pin_len / 2
 
 ph_pitch = ph_sep + ph_rad * 2
 
@@ -17,6 +17,9 @@ ph_pitch = ph_sep + ph_rad * 2
 wh_rad_ph_cen = ph_pitch * n_flaps / (2 * math.pi)
 ph_wall_out = 3
 wh_rad_outer = wh_rad_ph_cen + ph_rad + ph_wall_out
+
+# wheel inner diameter is set by motor shaft diameter
+motor_shaft_rear_diam = 5.0
 
 outer_radius = wh_rad_outer
 hole_radius = 5.0
@@ -30,8 +33,7 @@ with BuildPart() as disc:
     with PolarLocations(radius=wh_rad_ph_cen, count=n_flaps):
         Hole(radius=ph_rad)
 
-# Get the directory where this python script lives
-save_dir = os.path.dirname(__file__)
-save_path = os.path.join(save_dir, "wheel_v0.glb")
 
-export_gltf(disc.part, save_path, binary=True)
+# Get the directory where this python script lives
+export_step(disc.part, "my_part.step")
+
