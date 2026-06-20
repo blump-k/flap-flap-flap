@@ -1,8 +1,8 @@
 import math
+import os
 from build123d import *
 
 # The radius of the wheel will be set by the number of flaps needed
-
 n_flaps = 69
 
 # pinhole pitch calcs
@@ -22,17 +22,16 @@ outer_radius = wh_rad_outer
 hole_radius = 5.0
 thickness = 3
 
-# 2. Start the builder
 with BuildPart() as disc:
-    # 3. Create the main solid body
     Cylinder(radius=outer_radius, height=thickness)
-    
-    # 4. Cut a hole through it
-    # Hole() automatically centers itself and figures out the depth to cut completely through
     Hole(radius=hole_radius)
+    
+    # Polar array of holes cut through the disc
+    with PolarLocations(radius=wh_rad_ph_cen, count=n_flaps):
+        Hole(radius=ph_rad)
 
-# 3.
+# Get the directory where this python script lives
+save_dir = os.path.dirname(__file__)
+save_path = os.path.join(save_dir, "wheel_v0.glb")
 
-# 3. Export as .glb (glTF binary)
-# You need to pass the actual shape to export, the filename, and set binary=True
-export_gltf(disc.part, "wheel_v0.glb", binary=True)
+export_gltf(disc.part, save_path, binary=True)
